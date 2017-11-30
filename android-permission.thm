@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view nodetheme="Martha" edgetheme="Martha">
+
+<projection> <type name="Time"/> </projection>
+
+<defaultnode hideunconnected="yes"/>
+
+<defaultedge color="Black"/>
+
+<node>
+   <type name="Activity"/>
+   <type name="AppSignature"/>
+   <type name="BroadcastReceiver"/>
+   <type name="ContentProvider"/>
+   <type name="Dangerous"/>
+   <type name="Flags"/>
+   <type name="Guard"/>
+   <type name="Int"/>
+   <type name="ModelTracking"/>
+   <type name="Name"/>
+   <type name="Normal"/>
+   <type name="PackageName"/>
+   <type name="PermGroupName"/>
+   <type name="PermissionData"/>
+   <type name="PermissionGroup"/>
+   <type name="Signature"/>
+   <type name="String"/>
+   <type name="Time"/>
+   <type name="univ"/>
+   <type name="boolean/Bool"/>
+   <type name="boolean/False"/>
+   <type name="boolean/True"/>
+   <type name="nat/Natural"/>
+   <type name="seq/Int"/>
+   <type name="to/Ord"/>
+   <type name="nat/ord/Ord"/>
+   <set name="$NoUnauthorizedAccess_callee" type="Component"/>
+   <set name="$NoUnauthorizedAccess_caller" type="Component"/>
+   <set name="$NoUnauthorizedAccess_t" type="Time"/>
+   <set name="$traces_c1" type="Component"/>
+   <set name="$traces_c2" type="Component"/>
+   <set name="First" type="to/Ord"/>
+   <set name="Next" type="to/Ord"/>
+   <set name="nat/One" type="nat/Natural"/>
+   <set name="nat/Zero" type="nat/Natural"/>
+</node>
+
+<node color="Green">
+   <type name="Application"/>
+</node>
+
+<node color="Red">
+   <type name="PermName"/>
+</node>
+
+<node label="Component">
+   <type name="Service"/>
+</node>
+
+<node shape="Box" color="Gray">
+   <type name="Component"/>
+</node>
+
+<node shape="Box" color="Red">
+   <type name="Permission"/>
+</node>
+
+<node shape="Ellipse" color="Green">
+   <type name="Device"/>
+</node>
+
+<node showlabel="no">
+   <set name="$traces_app" type="Application"/>
+</node>
+
+<node visible="no">
+   <type name="ProtectionLevel"/>
+</node>
+
+<edge attribute="yes">
+   <relation name="builtinPerms"> <type name="Device"/> <type name="Permission"/> </relation>
+   <relation name="declaredPerms"> <type name="Application"/> <type name="Permission"/> </relation>
+   <relation name="protectionLevel"> <type name="Permission"/> <type name="ProtectionLevel"/> </relation>
+</edge>
+
+<edge visible="no">
+   <relation name="$guardedBySourceId"> <type name="Component"/> <type name="AppSignature"/> </relation>
+   <relation name="app"> <type name="Component"/> <type name="Application"/> </relation>
+   <relation name="causes"> <type name="Component"/> <type name="Component"/> </relation>
+   <relation name="FLAG_PERMISSION_GRANTED_BY_DEFAULT"> <type name="Flags"/> <type name="boolean/Bool"/> </relation>
+   <relation name="FLAG_PERMISSION_POLICY_FIXED"> <type name="Flags"/> <type name="boolean/Bool"/> </relation>
+   <relation name="FLAG_PERMISSION_REVOKE_ON_UPGRADE"> <type name="Flags"/> <type name="boolean/Bool"/> </relation>
+   <relation name="FLAG_PERMISSION_SYSTEM_FIXED"> <type name="Flags"/> <type name="boolean/Bool"/> </relation>
+   <relation name="isUserPromptScreenShown"> <type name="ModelTracking"/> <type name="boolean/Bool"/> </relation>
+</edge>
+
+<edge visible="no" attribute="yes">
+   <relation name="$guardedBy"> <type name="Component"/> <type name="PermName"/> </relation>
+   <relation name="builtinPermGroups"> <type name="Device"/> <type name="PermissionGroup"/> </relation>
+   <relation name="customPerms"> <type name="Device"/> <type name="Permission"/> </relation>
+   <relation name="flags"> <type name="PermissionData"/> <type name="Flags"/> </relation>
+   <relation name="guard"> <type name="Application"/> <type name="Guard"/> </relation>
+   <relation name="guard"> <type name="Component"/> <type name="Guard"/> </relation>
+   <relation name="isCustomPermission"> <type name="Permission"/> <type name="boolean/Bool"/> </relation>
+   <relation name="isRuntime"> <type name="PermissionData"/> <type name="boolean/Bool"/> </relation>
+   <relation name="name"> <type name="Guard"/> <type name="PermName"/> </relation>
+   <relation name="name"> <type name="Permission"/> <type name="PermName"/> </relation>
+   <relation name="name"> <type name="PermissionGroup"/> <type name="PermGroupName"/> </relation>
+   <relation name="packageName"> <type name="Application"/> <type name="PackageName"/> </relation>
+   <relation name="permGroup"> <type name="Permission"/> <type name="PermGroupName"/> </relation>
+   <relation name="platformPackageName"> <type name="Device"/> <type name="PackageName"/> </relation>
+   <relation name="platformSignature"> <type name="Device"/> <type name="AppSignature"/> </relation>
+   <relation name="signature"> <type name="Application"/> <type name="AppSignature"/> </relation>
+   <relation name="sourceId"> <type name="Guard"/> <type name="AppSignature"/> </relation>
+   <relation name="sourceId"> <type name="Permission"/> <type name="AppSignature"/> </relation>
+   <relation name="sourcePackage"> <type name="Permission"/> <type name="PackageName"/> </relation>
+   <relation name="targetSDK"> <type name="Application"/> <type name="Int"/> </relation>
+   <relation name="usesPerms"> <type name="Application"/> <type name="PermName"/> </relation>
+</edge>
+
+</view>
+
+</alloy>
