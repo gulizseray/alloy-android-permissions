@@ -36,7 +36,6 @@ sig PermissionGroup {
 // To protect app components
 sig Guard {
 	name: PermName,
-//	sourceId: AppSignature
 }
 
 abstract sig ProtectionLevel {}
